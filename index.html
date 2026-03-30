@@ -734,6 +734,109 @@ blockquote p { margin: 0; font-size: var(--small); color: var(--text-2); }
 .compare-table .after { color: var(--success); font-weight: 600; }
 
 /* ============================================
+   ECOSYSTEM / PLAYS WELL WITH OTHERS
+   ============================================ */
+.ecosystem-visual {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  height: 520px;
+  margin: 0 auto 56px;
+}
+.eco-hub {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+.eco-hub-inner {
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(129,140,248,0.25) 0%, rgba(99,102,241,0.08) 100%);
+  border: 2px solid var(--accent);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 2px;
+  box-shadow: 0 0 60px rgba(99,102,241,0.3), 0 0 120px rgba(99,102,241,0.1);
+  animation: hubPulse 3s ease-in-out infinite;
+}
+@keyframes hubPulse {
+  0%, 100% { box-shadow: 0 0 60px rgba(99,102,241,0.3), 0 0 120px rgba(99,102,241,0.1); }
+  50% { box-shadow: 0 0 80px rgba(99,102,241,0.5), 0 0 160px rgba(99,102,241,0.15); }
+}
+.eco-hub-icon { font-size: 2rem; line-height: 1; }
+.eco-hub-label { font-size: var(--label); font-weight: 700; color: var(--text-1); letter-spacing: 0.05em; }
+
+.eco-spokes { position: absolute; inset: 0; }
+.eco-node {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 120px;
+  padding: 14px 10px;
+  text-align: center;
+  border-radius: var(--radius-sm);
+  transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-200px) rotate(calc(var(--angle) * -1));
+  animation: nodeFloat 4s ease-in-out infinite;
+  animation-delay: var(--delay);
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+}
+@keyframes nodeFloat {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
+}
+.eco-icon { font-size: 1.5rem; line-height: 1; }
+.eco-name { font-size: var(--label); color: var(--text-2); font-weight: 500; white-space: nowrap; }
+.eco-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.eco-tag[style] { /* fallback */ }
+.eco-node:nth-child(odd) .eco-tag { background: rgba(129,140,248,0.15); color: var(--accent); }
+.eco-node:nth-child(even) .eco-tag { background: rgba(74,222,128,0.12); color: var(--success); }
+.eco-node:last-child .eco-tag { background: rgba(248,113,113,0.12); color: var(--danger); }
+.eco-node:last-child { border-style: dashed; }
+
+/* connector lines from hub to nodes (pure CSS) */
+.ecosystem-visual::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 380px; height: 380px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px dashed rgba(255,255,255,0.06);
+}
+
+.eco-how {
+  display: flex; gap: 20px;
+  max-width: 820px;
+  margin: 0 auto;
+}
+.eco-step {
+  flex: 1;
+  padding: 24px;
+  border-radius: var(--radius);
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.eco-step-num {
+  width: 36px; height: 36px; min-width: 36px;
+  border-radius: 50%;
+  background: rgba(129,140,248,0.15);
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.eco-step-text { display: flex; flex-direction: column; gap: 4px; }
+.eco-step-text strong { color: var(--text-1); font-size: var(--body); }
+.eco-step-text span { color: var(--text-3); font-size: var(--small); line-height: 1.5; }
+
+/* ============================================
    DIVIDER
    ============================================ */
 .divider {
@@ -792,6 +895,10 @@ blockquote p { margin: 0; font-size: var(--small); color: var(--text-2); }
   .matrix-grid { grid-template-columns: 1fr; }
   .results-grid { grid-template-columns: 1fr 1fr; }
   .phases { grid-template-columns: 1fr; }
+  .ecosystem-visual { height: 420px; max-width: 420px; }
+  .eco-node { width: 105px; padding: 10px 8px; transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-160px) rotate(calc(var(--angle) * -1)); }
+  .ecosystem-visual::before { width: 300px; height: 300px; }
+  .eco-how { flex-direction: column; }
   .hero { min-height: auto; padding: 100px 20px 60px; }
   .hero-buttons { flex-direction: column; align-items: center; }
   .btn { width: 100%; max-width: 280px; justify-content: center; }
@@ -831,6 +938,16 @@ blockquote p { margin: 0; font-size: var(--small); color: var(--text-2); }
   /* Status badges vertical */
   .status-badges { flex-direction: column; gap: 8px; }
 
+  /* Ecosystem */
+  .ecosystem-visual { height: 360px; max-width: 340px; }
+  .eco-hub-inner { width: 80px; height: 80px; }
+  .eco-hub-icon { font-size: 1.5rem; }
+  .eco-node { width: 90px; padding: 8px 6px; transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-130px) rotate(calc(var(--angle) * -1)); }
+  .eco-icon { font-size: 1.2rem; }
+  .eco-name { font-size: 0.6rem; }
+  .eco-tag { font-size: 0.5rem; padding: 1px 6px; }
+  .ecosystem-visual::before { width: 240px; height: 240px; }
+
   /* Footer */
   .footer { padding: 60px 16px; }
 }
@@ -852,6 +969,7 @@ blockquote p { margin: 0; font-size: var(--small); color: var(--text-2); }
       <a href="#security">Security</a>
       <a href="#automation">Automation</a>
       <a href="#results">Results</a>
+      <a href="#ecosystem">Ecosystem</a>
       <a href="https://drive.google.com/file/d/1luekhTV4Y0NmPsa-QF6ve6MZ00Fa9OrL/view?usp=drive_link" target="_blank" rel="noopener" class="nav-cta">Watch Demo &#9654;</a>
     </div>
     <div class="hamburger" onclick="this.classList.toggle('active');document.getElementById('mnav').classList.toggle('open');">
@@ -867,6 +985,7 @@ blockquote p { margin: 0; font-size: var(--small); color: var(--text-2); }
   <a href="#security" onclick="closeMnav()">Security</a>
   <a href="#automation" onclick="closeMnav()">Automation</a>
   <a href="#results" onclick="closeMnav()">Results</a>
+  <a href="#ecosystem" onclick="closeMnav()">Ecosystem</a>
   <a href="https://drive.google.com/file/d/1luekhTV4Y0NmPsa-QF6ve6MZ00Fa9OrL/view?usp=drive_link" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:16px" onclick="closeMnav()">Watch Demo &#9654;</a>
 </div>
 
@@ -1297,6 +1416,66 @@ blockquote p { margin: 0; font-size: var(--small); color: var(--text-2); }
       <tr><td>Newsletter</td><td>30 min/week</td><td class="after">Zero effort</td></tr>
       <tr><td>Morning routine</td><td>Firefighting</td><td class="after">Coffee + review</td></tr>
     </table>
+  </div>
+</section>
+
+<!-- ============================================
+     PLAYS WELL WITH OTHERS
+     ============================================ -->
+<div class="divider"></div>
+<section class="section" id="ecosystem">
+  <div class="wrap">
+    <div style="text-align:center" data-reveal>
+      <p class="label">The Bigger Picture</p>
+      <h2 class="h2">Your hackathon project?<br><span class="gradient-text">Echo already wants to talk to it.</span></h2>
+      <p class="subtext" style="margin:0 auto 48px; max-width:640px;">Expose an MCP server or a simple curl endpoint. That's it. Echo connects, orchestrates, and suddenly your standalone project is part of a unified AI ops brain. Every hackathon tool becomes a superpower Echo can invoke.</p>
+    </div>
+
+    <div class="ecosystem-visual" data-reveal>
+      <div class="eco-hub">
+        <div class="eco-hub-inner">
+          <span class="eco-hub-icon">&#x1FAE1;</span>
+          <span class="eco-hub-label">Echo</span>
+        </div>
+      </div>
+      <div class="eco-spokes">
+        <div class="eco-node glass" style="--angle: 0deg; --delay: 0s;"><span class="eco-icon">&#x1F50C;</span><span class="eco-name">Your MCP Server</span><span class="eco-tag">mcp</span></div>
+        <div class="eco-node glass" style="--angle: 51deg; --delay: 0.1s;"><span class="eco-icon">&#x1F4CA;</span><span class="eco-name">Analytics Bot</span><span class="eco-tag">curl</span></div>
+        <div class="eco-node glass" style="--angle: 103deg; --delay: 0.2s;"><span class="eco-icon">&#x1F916;</span><span class="eco-name">ML Pipeline</span><span class="eco-tag">mcp</span></div>
+        <div class="eco-node glass" style="--angle: 154deg; --delay: 0.3s;"><span class="eco-icon">&#x1F510;</span><span class="eco-name">Security Scanner</span><span class="eco-tag">curl</span></div>
+        <div class="eco-node glass" style="--angle: 206deg; --delay: 0.4s;"><span class="eco-icon">&#x1F4E6;</span><span class="eco-name">Deploy Tool</span><span class="eco-tag">mcp</span></div>
+        <div class="eco-node glass" style="--angle: 257deg; --delay: 0.5s;"><span class="eco-icon">&#x1F4DD;</span><span class="eco-name">Doc Generator</span><span class="eco-tag">curl</span></div>
+        <div class="eco-node glass" style="--angle: 309deg; --delay: 0.6s;"><span class="eco-icon">&#x2753;</span><span class="eco-name">Yours?</span><span class="eco-tag">next</span></div>
+      </div>
+    </div>
+
+    <div class="eco-how" data-reveal>
+      <div class="eco-step glass">
+        <div class="eco-step-num">1</div>
+        <div class="eco-step-text">
+          <strong>Expose it</strong>
+          <span>Ship an MCP server or a simple HTTP endpoint. If it responds to JSON, Echo can talk to it.</span>
+        </div>
+      </div>
+      <div class="eco-step glass">
+        <div class="eco-step-num">2</div>
+        <div class="eco-step-text">
+          <strong>Connect it</strong>
+          <span>Add a tool definition or a curl call in Echo's skill file. One line. No SDK. No ceremony.</span>
+        </div>
+      </div>
+      <div class="eco-step glass">
+        <div class="eco-step-num">3</div>
+        <div class="eco-step-text">
+          <strong>Forget about it</strong>
+          <span>Echo now invokes your tool autonomously &mdash; during triage, in Asana tickets, wherever it helps. Your project just joined the hive mind.</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:40px;" data-reveal>
+      <p class="subtext" style="margin:0 auto; max-width:560px; font-style:italic; color: var(--accent);">"We didn't build a tool. We built the last tool you'll need to wire up."</p>
+    </div>
   </div>
 </section>
 

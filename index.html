@@ -734,6 +734,101 @@ blockquote p { margin: 0; font-size: var(--small); color: var(--text-2); }
 .compare-table .after { color: var(--success); font-weight: 600; }
 
 /* ============================================
+   TESTIMONIALS / REAL STORIES
+   ============================================ */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.testimonial-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 36px 32px 28px;
+  position: relative;
+  transition: border-color 0.3s, background 0.3s;
+}
+.testimonial-card:hover {
+  border-color: var(--glass-border-hover);
+  background: var(--glass-hover);
+}
+.testimonial-quote-mark {
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--accent-dim);
+  opacity: 0.4;
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  font-family: Georgia, serif;
+  pointer-events: none;
+}
+.testimonial-body {
+  font-size: var(--body);
+  color: var(--text-2);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+.testimonial-body strong {
+  color: var(--success);
+  font-weight: 600;
+}
+.testimonial-body em {
+  color: var(--accent);
+  font-style: normal;
+}
+.testimonial-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 16px;
+}
+.testimonial-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-dim), var(--accent-bright));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+.testimonial-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.testimonial-name {
+  font-size: var(--small);
+  font-weight: 600;
+  color: var(--text-1);
+}
+.testimonial-role {
+  font-size: var(--label);
+  color: var(--text-3);
+}
+.testimonial-ticket {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: var(--label);
+  color: var(--text-3);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ============================================
    ECOSYSTEM / PLAYS WELL WITH OTHERS
    ============================================ */
 .ecosystem-visual {
@@ -895,6 +990,7 @@ blockquote p { margin: 0; font-size: var(--small); color: var(--text-2); }
   .matrix-grid { grid-template-columns: 1fr; }
   .results-grid { grid-template-columns: 1fr 1fr; }
   .phases { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
   .ecosystem-visual { height: 420px; max-width: 420px; }
   .eco-node { width: 105px; padding: 10px 8px; transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-160px) rotate(calc(var(--angle) * -1)); }
   .ecosystem-visual::before { width: 300px; height: 300px; }
@@ -969,6 +1065,7 @@ blockquote p { margin: 0; font-size: var(--small); color: var(--text-2); }
       <a href="#security">Security</a>
       <a href="#automation">Automation</a>
       <a href="#results">Results</a>
+      <a href="#testimonials">Proof</a>
       <a href="#ecosystem">Ecosystem</a>
       <a href="https://drive.google.com/file/d/1luekhTV4Y0NmPsa-QF6ve6MZ00Fa9OrL/view?usp=drive_link" target="_blank" rel="noopener" class="nav-cta">Watch Demo &#9654;</a>
     </div>
@@ -985,6 +1082,7 @@ blockquote p { margin: 0; font-size: var(--small); color: var(--text-2); }
   <a href="#security" onclick="closeMnav()">Security</a>
   <a href="#automation" onclick="closeMnav()">Automation</a>
   <a href="#results" onclick="closeMnav()">Results</a>
+  <a href="#testimonials" onclick="closeMnav()">Proof</a>
   <a href="#ecosystem" onclick="closeMnav()">Ecosystem</a>
   <a href="https://drive.google.com/file/d/1luekhTV4Y0NmPsa-QF6ve6MZ00Fa9OrL/view?usp=drive_link" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:16px" onclick="closeMnav()">Watch Demo &#9654;</a>
 </div>
@@ -1416,6 +1514,58 @@ blockquote p { margin: 0; font-size: var(--small); color: var(--text-2); }
       <tr><td>Newsletter</td><td>30 min/week</td><td class="after">Zero effort</td></tr>
       <tr><td>Morning routine</td><td>Firefighting</td><td class="after">Coffee + review</td></tr>
     </table>
+  </div>
+</section>
+
+<!-- ============================================
+     TESTIMONIALS / REAL STORIES
+     ============================================ -->
+<div class="divider"></div>
+<section class="section" id="testimonials">
+  <div class="wrap">
+    <div style="text-align:center" data-reveal>
+      <p class="label">Receipts</p>
+      <h2 class="h2">We don't need testimonials.<br><span class="gradient-text">We have ticket history.</span></h2>
+      <p class="subtext" style="margin:0 auto 48px; max-width:620px;">Real production tickets. Real engineers. Real &ldquo;hold on, the AI already figured this out?&rdquo; faces. No actors were hired. No bugs were harmed. (Okay, several bugs were harmed.)</p>
+    </div>
+
+    <div class="testimonials-grid" data-reveal>
+      <!-- Testimonial 1: Shiv K Kushwaha -->
+      <div class="testimonial-card">
+        <span class="testimonial-quote-mark">&ldquo;</span>
+        <div class="testimonial-body">
+          Shiv triaged a sign-up failure the old-fashioned way &mdash; brain, coffee, gut feeling &mdash; and called it a backend data issue. Meanwhile, Echo was doing the exact same thing. Nobody asked it to. When Pranav opened the ticket, Echo had already posted its verdict: KYC failure, <em>DATA ISSUE</em>, <strong>70% confidence.</strong> Same answer. Zero communication. Shiv and Echo just &hellip; agreed. Spooky.
+        </div>
+        <div class="testimonial-ticket">Unable to complete sign up &middot; KYC failure</div>
+        <div class="testimonial-footer">
+          <div class="testimonial-avatar">SK</div>
+          <div class="testimonial-meta">
+            <span class="testimonial-name">Shiv K Kushwaha</span>
+            <span class="testimonial-role">QA Engineer &middot; Manual triage matched by AI</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 2: Archana Nair -->
+      <div class="testimonial-card">
+        <span class="testimonial-quote-mark">&ldquo;</span>
+        <div class="testimonial-body">
+          Archana had a login bug &mdash; mobile number going to sign-up instead of login. She typed <em>@Echo how do we sync the mobile number?</em> on the Asana ticket. Plot twist: Echo had already posted an <strong>85%-confidence deep-dive</strong> above her comment. Root cause? A <em>ghost auth record</em> hijacking the number. Pranav's one-line review: &ldquo;the above analysis from AI is really good.&rdquo; Archana just forwarded the AI's homework to the team. Meeting cancelled.
+        </div>
+        <div class="testimonial-ticket">Login via mobile &middot; auth data mismatch</div>
+        <div class="testimonial-footer">
+          <div class="testimonial-avatar">AN</div>
+          <div class="testimonial-meta">
+            <span class="testimonial-name">Archana Nair K</span>
+            <span class="testimonial-role">QA Lead &middot; First @Echo conversation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:40px;" data-reveal>
+      <p class="subtext" style="margin:0 auto; max-width:520px; font-style:italic; color: var(--text-3);">Both tickets &mdash; resolved same day. Neither engineer opened Sentry, Graylog, or a database console.<br>Echo had already done the homework. It does that. It&rsquo;s a little annoying, honestly.</p>
+    </div>
   </div>
 </section>
 
